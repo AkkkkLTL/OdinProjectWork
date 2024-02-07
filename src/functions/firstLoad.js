@@ -6,6 +6,6 @@ const firstLoad = function() {
     const header = headerDiv();
     body.prepend(header);
     home();
-}
+};
 
 export default firstLoad;

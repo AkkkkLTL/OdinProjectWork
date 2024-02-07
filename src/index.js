@@ -15,18 +15,18 @@ const $homeButton = document.querySelector("#home-web");
 const $menuButton = document.querySelector("#menu-web");
 const $aboutButton = document.querySelector("#about-web");
 
-$homeButton.addEventListener('click', function(){
+$homeButton.addEventListener("click", () =>{
     // Clearing content childnode
     render();
     home();
 });
 
-$menuButton.addEventListener('click', function(){
+$menuButton.addEventListener("click", () =>{
     render();
     menu();
 });
 
-$aboutButton.addEventListener('click', function(){
+$aboutButton.addEventListener("click", () =>{
     render();
     about();
 });

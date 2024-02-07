@@ -6,6 +6,6 @@ const createHtmlElement = function(obj) {
     if(obj.content) element.textContent = obj.content;
 
     return element;
-}
+};
 
 export default createHtmlElement;
