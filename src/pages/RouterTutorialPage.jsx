@@ -21,7 +21,7 @@ import Index from "../components/router-tutorial/routes";
 
 const router = createBrowserRouter([
   {
-    path: "/routertutorial",
+    path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
     loader: rootLoader,
