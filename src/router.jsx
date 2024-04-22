@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import * as React from "react";
 
 import Root, {
@@ -18,6 +18,7 @@ import Index from "./components/router-tutorial/routes";
 
 
 import { lazy } from "react";
+import DashboardApp from "./pages/dashboard/DashboardApp";
 
 const CVAppPage = lazy(() => import("./pages/CVAppPage"));
 const RouterTutorialPage = lazy(() => import("./pages/RouterTutorialPage"));
@@ -25,6 +26,14 @@ const RouterTutorialPage = lazy(() => import("./pages/RouterTutorialPage"));
 export const router = createBrowserRouter([
   {
     path: "/",
+    element: <Navigate to="/Home" />
+  },
+  {
+    path: "/Home",
+    element: <DashboardApp />
+  },
+  {
+    path: "/cv-app",
     element: <CVAppPage />
   },
   {
@@ -58,5 +67,7 @@ export const router = createBrowserRouter([
         ]
       }
     ]
-  }
-])
+  },
+],{
+  basename: '/OdinProjectWork',
+})

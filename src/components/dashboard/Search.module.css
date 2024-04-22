@@ -1,0 +1,16 @@
+.search {
+  display: flex;
+  gap: 20px;
+  width: 75%;
+  align-items: center;
+  margin: 10px;
+  & img {
+    width: 25px;
+  }
+  & input {
+    border-radius: 50px;
+    flex-grow: 1;
+    height: 65%;
+    background-color: rgba(128, 128, 128, 0.2);
+  }
+}
