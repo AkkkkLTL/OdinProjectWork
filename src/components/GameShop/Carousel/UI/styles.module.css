@@ -1,0 +1,53 @@
+.carousel-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.carousel-button {
+  z-index: 1;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slides-wrapper {
+  width: inherit;
+  height: inherit;
+  overflow: hidden;
+}
+
+.slides-container {
+  --width: 0;
+  --positionX: 0;
+  --speed: 1.5s;
+  display: flex;
+  width: fit-content;
+  height: inherit;
+  transform: translateX(calc(var(--positionX) * -1px));
+  animation: move var(--speed) steps(1) infinite;
+  
+  @keyframes move {
+    0% {
+      transform: translate(calc(var(--positionX) * -1px),0);
+    }
+    100% {
+      transform: translate(calc(var(--positionX) - var(--width)),0);
+    }
+  }
+}
+
+.slide {
+  margin: 0;
+  padding: 0;
+  width: inherit;
+  height: inherit;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .5s transform ease-in-out;
+}

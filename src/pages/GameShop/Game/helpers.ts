@@ -1,0 +1,1 @@
+export const cutOffGame = (str:string) => str.replace('/gs/games/game/', '');

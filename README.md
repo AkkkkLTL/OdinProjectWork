@@ -34,3 +34,35 @@ A set of Odin Project Practice
 2. sidebar, header, main contant
 3. projects list
 4. create router
+
+## Project: Shopping Card
+[Shopping Card](https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart)
+- v0.0.0: Creating Shopping Card
+1. home page & shop page
+2. convert to TypeScript
+
+# File Structure
+- assets
+  Restore project's resources. including images, video, icon, font
+- api
+  Request to back-end and get response
+- components
+  Some components which can reuse
+- helpers
+  Some common Functions which can reuse
+- modules
+  
+- pages
+  Single project's pages
+- redux
+  The state manage with projects
+- router
+  The router with projects
+- styles
+  Some common styles which can reuse
+- theme
+  Single project's theme
+- types
+  Some common types which can reuse
+App.tsx
+main.tsx

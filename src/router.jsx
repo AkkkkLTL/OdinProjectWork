@@ -23,7 +23,7 @@ import DashboardApp from "./pages/dashboard/DashboardApp";
 const CVAppPage = lazy(() => import("./pages/CVAppPage"));
 const RouterTutorialPage = lazy(() => import("./pages/RouterTutorialPage"));
 
-export const router = createBrowserRouter([
+/* export const router = createBrowserRouter([
   {
     path: "/",
     element: <Navigate to="/Home" />
@@ -68,6 +68,12 @@ export const router = createBrowserRouter([
       }
     ]
   },
+],{
+  basename: '/OdinProjectWork',
+})*/
+
+export const router = createBrowserRouter([
+  
 ],{
   basename: '/OdinProjectWork',
 })
