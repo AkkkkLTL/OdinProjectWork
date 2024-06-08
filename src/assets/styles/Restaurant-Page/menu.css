@@ -1,0 +1,9 @@
+.menu-item {
+    max-width: 600px;
+    margin-bottom: 40px;
+    margin-left: calc(50vw - 300px);
+}
+
+.menu-hr {
+    border: 1px solid #c59d5f;
+}
