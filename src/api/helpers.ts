@@ -60,3 +60,18 @@ export const getData = async <T>(url:string, params?: Record<string, string>):Pr
     return error as T;
   }
 };
+
+let fakeCache:{
+  [property: string]: boolean,
+} = {};
+export const fakeNetWork = async (key:string = '') => {
+  if (!key) {
+    fakeCache = {};
+  }
+
+  if (fakeCache[key]) return;
+  fakeCache[key] = true;
+  return new Promise(res => {
+    setTimeout(res, Math.random() * 800);
+  })
+}

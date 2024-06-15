@@ -1,27 +1,27 @@
-import { Form, redirect, useLoaderData,
-  useNavigate,
-} from "react-router-dom";
-import { updateContact } from "../contacts";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import { EditForm } from "./styles";
+import { loaderResData } from "./types";
 
-export default function EditContact() {
-  const {contact} = useLoaderData();
+export const EditContact = () => {
+
+  const { contact } = useLoaderData() as loaderResData;
   const navigate = useNavigate();
 
   return (
-    <Form method="post" id="contact-form">
+    <EditForm method="post">
       <p>
         <span>Name</span>
         <input
-          placeholder="First"
-          aria-label="First name"
           type="text"
+          placeholder="First"
+          aria-label="First Name"
           name="first"
           defaultValue={contact.first}
         />
         <input
-          placeholder="Last"
-          aria-label="Last name"
           type="text"
+          placeholder="Last"
+          aria-label="Last Name"
           name="last"
           defaultValue={contact.last}
         />
@@ -30,17 +30,17 @@ export default function EditContact() {
         <span>Twitter</span>
         <input
           type="text"
-          name="twitter"
           placeholder="@jack"
+          name="twitter"
           defaultValue={contact.twitter}
         />
       </label>
       <label>
         <span>Avatar URL</span>
         <input
+          type="text"
           placeholder="https://example.com/avatar.jpg"
           aria-label="Avatar URL"
-          type="text"
           name="avatar"
           defaultValue={contact.avatar}
         />
@@ -48,15 +48,14 @@ export default function EditContact() {
       <label>
         <span>Notes</span>
         <textarea
+          rows={6}
           name="notes"
           defaultValue={contact.notes}
-          rows={6}
         />
       </label>
       <p>
         <button type="submit">Save</button>
-        <button 
-          type="button"
+        <button type="button"
           onClick={() => {
             navigate(-1);
           }}
@@ -64,13 +63,6 @@ export default function EditContact() {
           Cancel
         </button>
       </p>
-    </Form>
-  )
-}
-
-export async function action({request, params}) {
-  const formData = await request.formData();
-  const updates = Object.fromEntries(formData);
-  await updateContact(params.contactId, updates);
-  return redirect(`/contacts/${params.contactId}`);
+    </EditForm>
+  );
 }

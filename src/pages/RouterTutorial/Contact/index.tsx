@@ -1,20 +1,21 @@
-import { Form, useFetcher, useLoaderData } from "react-router-dom";
-import { getContact, updateContact } from "../contacts";
+import { Form, useFetcher, useLoaderData } from "react-router-dom"
+import { loaderResData } from "./types";
+import { ContactMain, Title } from "./styles";
+import { Contact } from "../types";
 
-export default function Contact() {
-  const { contact } = useLoaderData();
+export const ContactPage = () => {
+  const { contact } = useLoaderData() as loaderResData;
 
   return (
-    <div id="contact">
+    <ContactMain>
       <div>
         <img
           key={contact.avatar}
-          src={contact.avatar || null}
+          src={contact.avatar}
         />
       </div>
-
       <div>
-        <h1>
+        <Title>
           {contact.first || contact.last ? (
             <>
               {contact.first} {contact.last}
@@ -23,8 +24,8 @@ export default function Contact() {
             <i>No Name</i>
           )}{' '}
           <Favorite contact={contact} />
-        </h1>
-
+        </Title>
+        
         {contact.twitter && (
           <p>
             <a
@@ -42,9 +43,9 @@ export default function Contact() {
           <Form action="edit">
             <button type="submit">Edit</button>
           </Form>
-          <Form
+          <Form 
             method="post"
-            action="destroy"
+            action="delete"
             onSubmit={(event) => {
               if (
                 !confirm(
@@ -59,14 +60,14 @@ export default function Contact() {
           </Form>
         </div>
       </div>
-    </div>
-  )
+    </ContactMain>
+  );
 }
 
-function Favorite({contact}) {
+const Favorite = ({contact}:{contact:Contact}) => {
   const fetcher = useFetcher();
   let favorite = contact.favorite;
-  
+
   if (fetcher.formData) {
     favorite = fetcher.formData.get("favorite") === "true";
   }
@@ -86,22 +87,4 @@ function Favorite({contact}) {
       </button>
     </fetcher.Form>
   )
-}
-
-export async function loader({params}) {
-  const contact = await getContact(params.contactId);
-  if (!contact) {
-    throw new Response("", {
-      status: 404,
-      statusText: "Not Found",
-    });
-  }
-  return { contact };
-}
-
-export async function action({request, params}) {
-  let formData = await request.formData();
-  return updateContact(params.contactId, {
-    favorite: formData.get("favorite") === "true",
-  });
 }

@@ -21,10 +21,9 @@ import {
 import Icon from "@mdi/react";
 import { nanoid } from "nanoid";
 import { previousYear } from "@pages/GameShop/Games/helpers";
-import { IOptions } from "@custypes/game-shopping";
 
 export enum PATHS {
-  home = '/gs',
+  home = '/gameshop',
   games = 'games',
   game = 'games/game/:id',
   addGame = 'add-game',
@@ -98,7 +97,7 @@ export const TOP_GAMES = [
   }
 ];
 
-export const PLATFORMS: IOptions[] = [
+export const PLATFORMS: GameShop.Option[] = [
   {
     id: nanoid(),
     name: FILTER_TITLE.PC,
