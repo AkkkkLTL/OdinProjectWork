@@ -1,4 +1,4 @@
-import { ReactNode, CSSProperties, RefObject } from "react"
+import { ReactNode, RefObject } from "react"
 
 export type ComponentBasicProps = {
   children: React.ReactNode,

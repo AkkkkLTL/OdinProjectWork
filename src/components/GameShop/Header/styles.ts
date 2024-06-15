@@ -70,12 +70,10 @@ export const Input = styled.input.attrs(() => ({
   background-color: ${prop => prop.theme.colors.black[100]};
 `
 
-export const MagnifyGlass = styled(MagnifyingGlass)(
-  ({theme}) => css`
-    height: 25px;
-    width: 25px;
-    margin-left: 10px;
-    fill: ${prop => prop.theme.colors.purple[50]};
-    cursor: pointer;
-  `
-)
+export const MagnifyGlass = styled(MagnifyingGlass)`
+  height: 25px;
+  width: 25px;
+  margin-left: 10px;
+  fill: ${prop => prop.theme.colors.purple[50]};
+  cursor: pointer;
+`

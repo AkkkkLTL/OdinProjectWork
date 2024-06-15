@@ -1,7 +1,6 @@
 import { Children } from "react"
 import { CarouselProps } from "./types"
 import CarouselWrapper from "./UI/CarouselWrapper"
-import CarouselContainer from "./UI/CarouselContainer"
 import CarouselButton from "./UI/CarouselButton"
 import SlidesContainer from "./UI/SlidesContainer"
 import Slide from "./UI/Slide"
@@ -11,12 +10,8 @@ import { useCarousel } from "./useCarousel"
 const Carousel = ({
   children = [],
   className,
-  loop=false,
   nextButton='>',
   prevButton='<',
-  slidesNumber=1,
-  spaceBetweenSlides=1,
-  onChange,
 }: CarouselProps) => {
   const { slidesWrapperRef, slideWidth, slideIndex, nextImg } = useCarousel();
 
@@ -32,7 +27,7 @@ const Carousel = ({
           width={slideWidth}
           positionX={slideIndex * slideWidth}
         >
-          {Children.map(children, (child, index) => 
+          {Children.map(children, (child) => 
             <Slide 
               key={child.key}
               width={slideWidth ? slideWidth : 0}

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Slides } from "./types";
 
 export const useSlides = ({
