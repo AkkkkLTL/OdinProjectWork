@@ -27,6 +27,7 @@
       "@constants/*": ["./src/constants/*"],
       "@helpers/*": ["./src/helpers/*"],
       "@hooks/*": ["./src/hooks/*"],
+      "@mock/*": ["./src/mock/*"],
       "@pages/*": ["./src/pages/*"],
       "@redux/*": ["./src/redux/*"],
       "@router/*": ["./src/router/*"],
