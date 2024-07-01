@@ -28,8 +28,6 @@ export interface Author {
 }
 
 export type Response<T> = {
-  data: {
-    data: T,
-    message: string,
-  }
+  data: T,
+  message: string,
 }

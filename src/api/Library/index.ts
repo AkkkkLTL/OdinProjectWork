@@ -45,6 +45,16 @@ export const getAuthors = async ():Promise<Response<Author[]> | undefined> => {
   }
 }
 
+export const createAuthor = async (data:string):Promise<Response<Author> | undefined> => {
+  try {
+    const res = await axios.post<Response<Author>>('/authors', {"full_name": data});
+    console.log('createAuthor Response data: ', res.data);
+    return res.data;
+  } catch(error) {
+    console.error('createAuthor Error: ', error);
+  }
+}
+
 export const createBook = async (data:Book):Promise<Response<Book> | undefined> => {
   try {
     const res = await axios.post<Response<Book>>('/books/create', data);
