@@ -51,6 +51,17 @@ export const BookCard = styled(Card)`
       max-width: 100%;
       max-height: 100%;
     }
+
+    &::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      background-color: ${prop => prop.$color};
+      left: 10px;
+      bottom: 10px;
+      border-radius: 50%;
+    }
   }
 
   .ant-card-actions {

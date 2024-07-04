@@ -1,7 +1,6 @@
 export interface SummaryData {
-  sumAuthor: number,
-  sumBook: number,
-  sumGenre: number,
+  _id: string,
+  number: number,
 }
 
 export interface Book {

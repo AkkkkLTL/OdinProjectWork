@@ -1,5 +1,5 @@
 import { Author, Book } from "@router/Library/loaders/types";
-import { Form } from "antd";
+import { Form, RadioChangeEvent } from "antd";
 import { useState } from "react"
 import { FormProps, useLoaderData, useNavigate, useOutletContext } from "react-router-dom";
 import { FieldType } from "../BookList/types";
@@ -7,6 +7,7 @@ import { updateBook } from "@api/Library";
 
 const useBookEdit = () => {
   const [open, setOpen] = useState(true);
+  const [statusRadio, setStatusRadio] = useState("UNREAD");
   const { authors } = useOutletContext() as {authors: Author[]};
   const { book } = useLoaderData() as { book:Book };
   const [form] = Form.useForm();
@@ -19,6 +20,10 @@ const useBookEdit = () => {
   const onClose = () => {
     setOpen(false);
     navigate("../");
+  }
+
+  const onStatusChange = ({target: {value}}: RadioChangeEvent) => {
+    setStatusRadio(value);
   }
 
   const onFinish:FormProps<FieldType>['onFinish'] = async (values) => {
@@ -39,7 +44,9 @@ const useBookEdit = () => {
     showDraw,
     onClose,
     onFinish,
-    onFinishFailed
+    onFinishFailed,
+    onStatusChange,
+    statusRadio
   }
 }
 

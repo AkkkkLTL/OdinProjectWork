@@ -9,7 +9,8 @@ export type FieldType = {
   title:string,
   isbn:string,
   author:string,
-  pages?:string,
+  pages?:number,
+  currentPages?:number,
   cover:string,
-  isRead?:string
+  status?:string,
 } & Book;

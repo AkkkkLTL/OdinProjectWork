@@ -1,36 +1,27 @@
-const testdata = [
-  { value: 1048, name: 'READING', itemStyle:{color:'#38bdf8'} },
-  { value: 735, name: 'UNREAD', itemStyle:{color:'#e5e5e5'} },
-  { value: 580, name: 'READED', itemStyle:{color:'#65a30d'} },
-];
+import { dataType, optionType } from "./types";
 
-export const option = (data) => {
+export const option = (data:dataType) => {
 
-  const totalNum = data.sumBook + data.sumAuthor + data.sumGenre;
+  const colors:Record<string,string> = {
+    "READING": "#38bdf8",
+    "UNREAD": "#e5e5e5",
+    "READED": "#65a30d",
+  };
 
-  const optionData = [
-    {
-      value: data.sumBook,
-      name: "Book Total",
-      itemStyle: {
-        color: '#38bdf8'
-      }
-    },
-    {
-      value: data.sumAuthor,
-      name: "Author Total",
-      itemStyle: {
-        color: '#e5e5e5',
-      }
-    },
-    {
-      value: data.sumGenre,
-      name: "Genre Total",
-      itemStyle: {
-        color: '#65a30d',
-      }
-    }
-  ]
+  let totalNum = 0, optionData:optionType[] = [];
+
+  if (data?.length > 0) {
+    data.forEach((item) => {
+      totalNum += item.number;
+      optionData.push({
+        value: item.number,
+        name: item._id,
+        itemStyle: {
+          color: colors[item._id]
+        }
+      })
+    })
+  }
 
   return {
     tooltip: {

@@ -71,15 +71,21 @@ export const BookPage = () => {
             {books.map((book) => (
               <BookCard
                 key={book._id}
+                $color={book.status == "READED" ? "green" : book.status == "UNREAD" ? "gray" : "red"}
                 hoverable
                 style={{width: 180}}
                 cover={
                   <img 
                     alt={book.title} 
-                    src={`//images.weserv.nl/?url=${book.cover}`} 
+                    src={book.cover ?? errorImg} 
                     onError={({currentTarget}) => {
-                      currentTarget.onerror = null;
-                      currentTarget.src = errorImg;
+                      const regex = /\/\/images.weserv.nl\/*/g
+                      if ( (!currentTarget.src) || currentTarget.src.match(regex)) {
+                        currentTarget.onerror = null;
+                        currentTarget.src = errorImg;
+                      } else {
+                        currentTarget.src = currentTarget.src.replace("", "//images.weserv.nl/?url=");
+                      }
                     }}
                   />
                 }

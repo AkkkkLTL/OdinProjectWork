@@ -1,5 +1,5 @@
 import type { Author, Book, Response, SummaryData } from "@router/Library/loaders/types";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 axios.defaults.baseURL = import.meta.env.VITE_CGAME_API_URL;
 
 

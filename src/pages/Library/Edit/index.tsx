@@ -1,6 +1,7 @@
-import { Button, Drawer, Form, Input, Select, Space } from "antd";
+import { Button, Drawer, Form, Input, Radio, Select, Space } from "antd";
 import useBookEdit from "./useEdit";
 import { FieldType } from "../BookList/types";
+import { statusOptions } from "./constant";
 
 export const Edit = () => {
 
@@ -10,7 +11,9 @@ export const Edit = () => {
     authors,
     form,
     showDraw,
+    onStatusChange,
     onClose,
+    statusRadio,
     onFinish,
     onFinishFailed
   } = useBookEdit();
@@ -98,6 +101,17 @@ export const Edit = () => {
         >
           <Input 
             placeholder="COVER IMG URL"
+          />
+        </Form.Item>
+        <Form.Item<FieldType>
+          label="Status"
+          name="status"
+          initialValue={book.status ?? "UNREAD"}
+        >
+          <Radio.Group
+            options={statusOptions}
+            onChange={onStatusChange}
+            value={statusRadio}
           />
         </Form.Item>
       </Form>
