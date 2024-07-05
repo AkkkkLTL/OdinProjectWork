@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom"
 import { BookListLoader, FieldType } from "./types";
 import { Form, FormProps } from "antd";
@@ -10,6 +10,7 @@ const useBookList = () => {
   const [form] = Form.useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
+  const authorRef = useRef(null);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -51,6 +52,7 @@ const useBookList = () => {
     books,
     authors,
     form,
+    authorRef,
     isModalOpen,
     showModal,
     handleOk,
