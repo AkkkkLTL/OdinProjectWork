@@ -1,4 +1,4 @@
-import { Button, Drawer, Form, Input, Radio, Select, Space } from "antd";
+import { Button, Drawer, Form, Input, InputNumber, Radio, Select, Space } from "antd";
 import useBookEdit from "./useEdit";
 import { FieldType } from "../BookList/types";
 import { statusOptions } from "./constant";
@@ -18,8 +18,6 @@ export const Edit = () => {
     onFinishFailed
   } = useBookEdit();
 
-  console.log("Book");
-  console.log(book);
   return (
     <Drawer
       title="Edit Book"
@@ -104,9 +102,23 @@ export const Edit = () => {
           />
         </Form.Item>
         <Form.Item<FieldType>
+          label="Pages"
+          name="pages"
+          initialValue={book.pages ?? 0}
+        >
+          <InputNumber min={0} />
+        </Form.Item>
+        {statusRadio == "READING" && <Form.Item<FieldType>
+          label="CurrentPages"
+          name="currentPages"
+          initialValue={book.currentPages ?? 0}
+        >
+          <InputNumber min={0} />
+        </Form.Item>}
+        <Form.Item<FieldType>
           label="Status"
           name="status"
-          initialValue={book.status ?? "UNREAD"}
+          initialValue={statusRadio}
         >
           <Radio.Group
             options={statusOptions}

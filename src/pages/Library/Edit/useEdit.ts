@@ -7,9 +7,9 @@ import { updateBook } from "@api/Library";
 
 const useBookEdit = () => {
   const [open, setOpen] = useState(true);
-  const [statusRadio, setStatusRadio] = useState("UNREAD");
   const { authors } = useOutletContext() as {authors: Author[]};
   const { book } = useLoaderData() as { book:Book };
+  const [statusRadio, setStatusRadio] = useState(book.status ?? "UNREAD");
   const [form] = Form.useForm();
   const navigate = useNavigate();
 

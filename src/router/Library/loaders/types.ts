@@ -15,6 +15,7 @@ export interface Book {
   imprint?: string,
   status?:string,
   pages?: number,
+  currentPages?: number,
 }
 
 export interface Author {

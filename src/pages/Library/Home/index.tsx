@@ -6,12 +6,8 @@ import {SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import { BookCard } from "../BookList/styles";
-import { Link } from "react-router-dom";
-import { Button } from "antd";
-import Icon from "@mdi/react";
-import { mdiBookEditOutline } from "@mdi/js";
+import { Button, Progress } from "antd";
 import Meta from "antd/es/card/Meta";
-import { Pagination } from "swiper/modules";
 
 export const HomePage = () => {
 
@@ -49,7 +45,13 @@ export const HomePage = () => {
             >
               <Meta 
                 title={book.title} 
-                description={book.author.map((role) => role.full_name).join(" & ")}
+                description={
+                  <>
+                    <div>{book.author.map((role) => role.full_name).join(" & ")}</div>
+                    {book.currentPages && <div>{`${book.currentPages} / ${book.pages}`}</div>}
+                    <Progress percent={(book.currentPages ?? 0) / (book.pages ?? 1) * 100} showInfo={false} />
+                  </>
+                }
               />
             </BookCard>
           </SwiperSlide>
