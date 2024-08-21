@@ -1,4 +1,4 @@
-import { getBooks, getSummary } from "@api/Library"
+import { getBooks, getSummary } from "@/api/Library"
 
 export const summaryLoader = async () => {
   const [summaryData, readingBooks] = await Promise.all(

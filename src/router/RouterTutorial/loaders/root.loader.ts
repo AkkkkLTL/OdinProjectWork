@@ -1,4 +1,4 @@
-import { getContacts } from "@api/RouterTutorial";
+import { getContacts } from "@/api/RouterTutorial";
 
 export async function rootLoader({request}:any) {
   const url = new URL(request.url);

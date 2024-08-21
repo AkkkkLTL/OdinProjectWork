@@ -1,4 +1,4 @@
-import { createContact } from "@api/RouterTutorial";
+import { createContact } from "@/api/RouterTutorial";
 import { redirect } from "react-router-dom";
 
 export async function rootAction() {

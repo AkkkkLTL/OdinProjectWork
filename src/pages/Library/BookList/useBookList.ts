@@ -2,8 +2,8 @@ import { useRef, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom"
 import { BookListLoader, FieldType } from "./types";
 import { Form, FormProps } from "antd";
-import { Book } from "@router/Library/loaders/types";
-import { createBook, deleteBook } from "@api/Library";
+import { Book } from "@/router/Library/loaders/types";
+import { createBook, deleteBook } from "@/api/Library";
 
 const useBookList = () => {
   const { books, authors } = useLoaderData() as BookListLoader;

@@ -8,13 +8,13 @@ import {
 } from "./styles";
 import useBookList from "./useBookList";
 import { Outlet, Link } from "react-router-dom";
-import { Button, Form, Image, Input, Modal, Select, Tag } from "antd";
+import { Button, Form, Image, Input, Modal, Pagination, Select, Tag } from "antd";
 import { FieldType } from "./types";
 import Meta from "antd/es/card/Meta";
 import Icon from "@mdi/react";
 import { mdiBookEditOutline, mdiTrashCanOutline } from "@mdi/js";
 import { useRef, useState } from "react";
-import { createAuthor } from "@api/Library";
+import { createAuthor } from "@/api/Library";
 
 const { Option } = Select;
 
@@ -115,6 +115,11 @@ export const BookPage = () => {
             ))}
           </BookList>
         )}
+        <Pagination 
+          total={books.length}
+          defaultCurrent={1}
+          defaultPageSize={16}
+        />
       </CustomContent>
       <Modal
         title="Add new book"

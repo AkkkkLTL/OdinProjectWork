@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux"
 
 // projects
 import { handleFilterClick } from "@helpers/game-shopping"
-import { RootState } from "@redux/GameShop/types";
-import { getGamesList } from "@api/GameShop/gameData";
-import { setCurrentFilter } from "@redux/GameShop/harborSlice";
+import { RootState } from "@/redux/GameShop/types";
+import { getGamesList } from "@/api/GameShop/gameData";
+import { setCurrentFilter } from "@/redux/GameShop/harborSlice";
 
 
 const useQuickNavigation = () => {

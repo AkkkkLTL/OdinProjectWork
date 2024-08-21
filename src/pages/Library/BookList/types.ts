@@ -1,4 +1,4 @@
-import { Author, Book } from "@router/Library/loaders/types"
+import { Author, Book } from "@/router/Library/loaders/types"
 
 export type BookListLoader = {
   books: Book[],

@@ -1,8 +1,8 @@
-import { Root } from "@pages/RouterTutorial";
-import { ContactPage } from "@pages/RouterTutorial/Contact";
-import { EditContact } from "@pages/RouterTutorial/Edit";
-import { ErrorPage } from "@pages/RouterTutorial/Error";
-import { Index } from "@pages/RouterTutorial/Home";
+import { Root } from "@/pages/RouterTutorial";
+import { ContactPage } from "@/pages/RouterTutorial/Contact";
+import { EditContact } from "@/pages/RouterTutorial/Edit";
+import { ErrorPage } from "@/pages/RouterTutorial/Error";
+import { Index } from "@/pages/RouterTutorial/Home";
 import type { RouteObject } from "react-router-dom";
 import { rootAction } from "./actions/root.action";
 import { contactAction } from "./actions/contact.action";
