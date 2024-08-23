@@ -11,7 +11,7 @@ import {
 } from "./styles"
 import { Form, Outlet, useLoaderData, useNavigation, useSubmit } from "react-router-dom";
 import { Contact, LoaderData } from "./types";
-import GlobalStyle from "@assets/styles/RouterTutorial/GlobalStyle";
+import GlobalStyle from "@/assets/styles/RouterTutorial/GlobalStyle";
 import { useEffect, useRef } from "react";
 
 export const Root = () => {
@@ -19,6 +19,8 @@ export const Root = () => {
   const navigation = useNavigation();
   const submit = useSubmit();
   const questRef = useRef<HTMLInputElement>(null);
+
+  console.log("Rendering Root");
 
   useEffect(() => {
     if (!questRef.current?.value) return;

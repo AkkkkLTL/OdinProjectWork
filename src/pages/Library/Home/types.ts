@@ -1,4 +1,4 @@
-import { Book, SummaryData } from "@router/Library/loaders/types"
+import { Book, SummaryData } from "@/router/Library/loaders/types"
 
 export type homeLoader = {
   summaryData: SummaryData[],
@@ -12,4 +12,9 @@ export type optionType = {
   itemStyle: {
     color: string
   },
+}
+
+export type FileType = {
+  pages: number,
+  currentPages: number,
 }

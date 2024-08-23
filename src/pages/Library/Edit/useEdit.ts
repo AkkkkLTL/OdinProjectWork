@@ -1,9 +1,9 @@
-import { Author, Book } from "@router/Library/loaders/types";
+import { Author, Book } from "@/router/Library/loaders/types";
 import { Form, RadioChangeEvent } from "antd";
 import { useState } from "react"
 import { FormProps, useLoaderData, useNavigate, useOutletContext } from "react-router-dom";
 import { FieldType } from "../BookList/types";
-import { updateBook } from "@api/Library";
+import { updateBook } from "@/api/Library";
 
 const useBookEdit = () => {
   const [open, setOpen] = useState(true);

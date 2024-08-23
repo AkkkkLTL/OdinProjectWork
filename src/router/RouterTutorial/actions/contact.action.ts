@@ -1,4 +1,4 @@
-import { updateContact } from "@api/RouterTutorial";
+import { updateContact } from "@/api/RouterTutorial";
 
 export async function contactAction({request, params}:any) {
   let formData = await request.formData();

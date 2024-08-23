@@ -1,20 +1,16 @@
 import { Link, Outlet } from "react-router-dom";
-import { AppMain, Detail, Nav } from "./styles";
-import { GlobalStyle } from "@assets/styles/Library/GlobalStyle";
+import * as ComponentStyles from "./styles";
+import { GlobalStyle } from "@/assets/styles/Library/GlobalStyle";
 import { NavConfig } from "./constant";
-import { Helmet } from "react-helmet";
 // import "@mock/Library/books";
 
 export const LibraryApp = () => {
 
   return (
     <>
-      <Helmet>
-        <meta name="referrer" content="no-referrer"/>
-      </Helmet>
       <GlobalStyle />
-      <AppMain>
-        <Nav
+      <ComponentStyles.AppContainer>
+        <ComponentStyles.SiderWrapper 
           width="10%"
         >
           {NavConfig.map((navitem) => (
@@ -25,9 +21,9 @@ export const LibraryApp = () => {
               {navitem.icon}
             </Link>
           ))}
-        </Nav>
+        </ComponentStyles.SiderWrapper>
         <Outlet />
-      </AppMain>
+      </ComponentStyles.AppContainer>
     </>
   );
 }

@@ -1,8 +1,8 @@
 import localforage from "localforage";
 import { matchSorter } from "match-sorter";
-import { fakeNetWork } from "@api/helpers"
+import { fakeNetWork } from "@/api/helpers"
 import sortBy from "sort-by";
-import { Contact } from "@pages/RouterTutorial/types";
+import { Contact } from "@/pages/RouterTutorial/types";
 import { nanoid } from "nanoid";
 
 export const getContacts = async (query?:string|null) => {

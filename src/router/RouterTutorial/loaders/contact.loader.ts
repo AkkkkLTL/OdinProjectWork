@@ -1,4 +1,4 @@
-import { getContact } from "@api/RouterTutorial";
+import { getContact } from "@/api/RouterTutorial";
 
 export const contactLoader = async ({params}:any) => {
   const contact = await getContact(params.contactId);

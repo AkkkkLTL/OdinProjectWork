@@ -1,4 +1,5 @@
-import { Author, Book } from "@router/Library/loaders/types"
+import { Author, Book } from "@/router/Library/loaders/types"
+import { IBook } from "@/types/Library";
 
 export type BookListLoader = {
   books: Book[],
@@ -14,3 +15,8 @@ export type FieldType = {
   cover:string,
   status?:string,
 } & Book;
+
+export interface IBooksRes {
+  data: IBook[];
+  message:string;
+}

@@ -8,7 +8,7 @@ import { libraryRouter } from "./Library";
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <Navigate to={'/library'} />
+    element: <Navigate to={'/library/books'} />
   },
   ...libraryRouter,
   // ...gameShopRouter,

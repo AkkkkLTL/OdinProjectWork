@@ -1,4 +1,4 @@
-import { updateContact } from "@api/RouterTutorial";
+import { updateContact } from "@/api/RouterTutorial";
 import { redirect } from "react-router-dom";
 
 export async function editAction({request, params}:any) {
