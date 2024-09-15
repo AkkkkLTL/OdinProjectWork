@@ -61,8 +61,8 @@ const useForm = (props:IFormProps) => {
     if (validateForm()) {
       setSubmitting(true);
       const result = await props.onSubmit(values);
-      setErrors(result.errors || {});
-      setSubmitted(result.success);
+      setErrors(result?.errors || {});
+      setSubmitted(result?.success || false);
       setSubmitting(false);
     }
   }
