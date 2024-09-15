@@ -6,12 +6,13 @@ import AdminUsers from "@/pages/ShoppingCart/AdminPage/AdminUsers";
 import ContactUsPage from "@/pages/ShoppingCart/ContactUsPage";
 import ProductPage from "@/pages/ShoppingCart/ProductPage";
 import ProductsPage from "@/pages/ShoppingCart/Products";
-import { RouteObject } from "react-router-dom";
+import { RouteType } from "../types";
 
-export const routerShoppingCart: RouteObject[] = [
+export const routerShoppingCart: RouteType[] = [
   {
     path: "/shoppingcart",
     element: <ShoppingCartApp />,
+    title: "",
     children: [
       {
         path: "products",
