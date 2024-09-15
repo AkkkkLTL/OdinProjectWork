@@ -8,13 +8,14 @@ import {
 } from "./styles";
 import useBookList from "./useBookList";
 import { Outlet, Link } from "react-router-dom";
-import { Button, Form, Image, Input, Modal, Pagination, Select, Tag } from "antd";
+import { Button, Form, Image, Input, Modal, Pagination, Segmented, Select, Tag } from "antd";
 import { FieldType } from "./types";
 import Meta from "antd/es/card/Meta";
 import Icon from "@mdi/react";
 import { mdiBookEditOutline, mdiTrashCanOutline } from "@mdi/js";
 import { useRef, useState } from "react";
 import { createAuthor } from "@/api/Library";
+import Tabs from "@/components/Tabs";
 
 const { Option } = Select;
 
@@ -35,12 +36,17 @@ export const BookPage = () => {
     authors,
     form,
     isModalOpen, 
+    statu,
+    total,
+    currentPage,
     showModal,
     handleOk,
     handleCancel,
     onFinish,
     onFinishFailed,
-    handleDeleteClick
+    handleDeleteClick,
+    handleStatusChange,
+    handlePageChange
   } = useBookList();
 
 
@@ -65,6 +71,24 @@ export const BookPage = () => {
           + New book
         </Button>
       </BooksPageHeader>
+      <Segmented
+        options={[
+          {
+            label: "阅读中",
+            value: "READING"
+          },
+          {
+            label: "未读",
+            value: "UNREAD"
+          },
+          {
+            label: "已读",
+            value: "READED"
+          }
+        ]}
+        value={statu}
+        onChange={handleStatusChange}
+      />
       <CustomContent>
         {books && books.length > 0 && (
           <BookList
@@ -73,6 +97,7 @@ export const BookPage = () => {
             {books.map((book) => (
               <BookCard
                 key={book._id}
+                $progress={(book.currentPages ?? 0) / (book.pages ?? 1) * 100}
                 $color={book.status == "READED" ? "green" : book.status == "UNREAD" ? "gray" : "red"}
                 hoverable
                 style={{width: 180}}
@@ -116,9 +141,11 @@ export const BookPage = () => {
           </BookList>
         )}
         <Pagination 
-          total={100}
+          total={total}
           defaultCurrent={1}
           defaultPageSize={16}
+          current={currentPage}
+          onChange={handlePageChange}
         />
       </CustomContent>
       <Modal

@@ -8,7 +8,7 @@ export interface IBook {
 
   summary?: string,
   imprint?: string,
-  status?:string,
+  status?:"READING" | "UNREAD" | "READED",
   pages?: number,
   currentPages?: number,
 }

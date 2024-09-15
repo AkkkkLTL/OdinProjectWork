@@ -50,6 +50,7 @@ export const BookCard = styled(Card)`
       height: auto;
       max-width: 100%;
       max-height: 100%;
+      mask-image: ${prop => `linear-gradient(0deg, #000 ${prop.$progress}%, #0000002b ${prop.$progress}%)`}
     }
 
     &::before {

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom"
-import { BookListLoader, FieldType, IBooksRes } from "./types";
-import { Form, FormProps } from "antd";
+import { BookListLoader, BookStatu, FieldType, IBooksRes } from "./types";
+import { Form, FormProps, PaginationProps } from "antd";
 import { Book } from "@/router/Library/loaders/types";
 import { createBook, deleteBook } from "@/api/Library";
 import { IBook } from "@/types/Library";
@@ -17,7 +17,9 @@ const useBookList = () => {
   // Setting Books Page State
   const [books, setBooks] = useState<IBook[]>();
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [total, setTotal] = useState<number>(0);
   const [error, setError] = useState<string>("");
+  const [statu, setStatu] = useState<BookStatu>("READING");
 
   useEffect(() => {
     // Get Books
@@ -27,18 +29,20 @@ const useBookList = () => {
       },
       params: {
         page: currentPage,
-        pageSize: 16
+        pageSize: 16,
+        status: statu
       },
       timeout: 5000
     }).then(response => {
-      setBooks(response.data.data);
+      setBooks(response.data.data.booklist);
+      setTotal(response.data.data.total);
     }).catch(ex => {
       const error = ex.code === "ECONNABORTED" 
       ? "A timeout has occurred" : ex.response.status === 404
       ? "Resource not found" : "An unexpected error has occurred";
       setError(error);
     })
-  }, []);
+  }, [currentPage, statu]);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -76,18 +80,31 @@ const useBookList = () => {
     console.log("Failed:", errorInfo);
   }
 
+  const handleStatusChange = (value:BookStatu) => {
+    setStatu(value);
+  }
+
+  const handlePageChange:PaginationProps['onChange'] = (page) => {
+    setCurrentPage(page);
+  }
+
   return {
     books,
     authors,
     form,
     authorRef,
     isModalOpen,
+    statu,
+    total,
+    currentPage,
     showModal,
     handleOk,
     handleCancel,
     onFinish,
     onFinishFailed,
-    handleDeleteClick
+    handleDeleteClick,
+    handleStatusChange,
+    handlePageChange
   }
 }
 export default useBookList;

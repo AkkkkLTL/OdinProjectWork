@@ -17,6 +17,11 @@ export type FieldType = {
 } & Book;
 
 export interface IBooksRes {
-  data: IBook[];
+  data: {
+    booklist: IBook[],
+    total: number
+  };
   message:string;
 }
+
+export type BookStatu = "READING" | "UNREAD" | "READED";
