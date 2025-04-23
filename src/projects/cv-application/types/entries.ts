@@ -34,6 +34,7 @@ export interface Experience extends Section {
   description: string;
 }
 
-export type ExModules<T> = {
-  [key:string]: T;
+export type Sections = {
+  educations: Education[];
+  experiences: Experience[];
 };

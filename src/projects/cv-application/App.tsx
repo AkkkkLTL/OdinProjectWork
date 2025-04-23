@@ -8,21 +8,26 @@ import PersonalDetails from "./components/personal-info/PersonalDetails";
 import Resume from "./components/Resume";
 import AddEducationSection from "./components/education/AddEducationSection";
 
-import { Education, Experience, Personal, ExModules } from "./types/entries";
+import type { Education, Experience, Personal, Sections } from "./types/entries";
 
 const App:FC = () => {
 
+  // 个人信息
   const [personalInfo, setPersonalInfo] = useState<Personal["baseInfo"]>(exampleData.personalInfo);
-  const [sections, setSections] = useState<ExModules>(exampleData.sections);
-  const [sectionOpen, setSectionOpen] = useState<string | null>(null);
+  // 扩展模块信息
+  const [sections, setSections] = useState(exampleData.sections);
+  // 扩展模块状态
+  const [sectionOpen, setSectionOpen] = useState<string>('');
+  // 页面状态
   const [currentPage, setCurrentPage] = useState("content");
+  // 简历布局状态
   const [resumeLayout, setResumeLayout] = useState("top");
-  const [prevState, setPrevState] = useState<ExModules>({});
+  const [prevState, setPrevState] = useState({});
 
   /**
-   * @desc xxx
-   * @param e 
-   * @returns
+   * 处理个人信息的改变
+   * @param 输入框改变事件对象
+   * @returns void - 更新个人信息
    */
   const handlePersonalInfoChange = (e:ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { key } = e.target.dataset as Record<string, string>;
@@ -32,18 +37,28 @@ const App:FC = () => {
     })
   }
 
+  /**
+   * 处理扩展模块的改变
+   * @param e 输入框改变事件对象
+   * @returns void - 更新扩展模块信息
+   */
   const handleSectionChange = (e:ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { key } = e.target.dataset as Record<string, keyof (Education | Experience)>;
+    const { key } = e.target.dataset as Record<string, string>;
     const form = e.target.closest(".section-form") as HTMLFormElement;
     const { id } = form;
-    const { arrayName } = form.dataset as Record<string, keyof ExModules>;
+    const { arrayName } = form.dataset as Record<string, keyof Sections>;
 
     if (sections && arrayName) {
+      // 获取对应模块的数组
       const section = sections[arrayName];
       setSections({
         ...sections,
         [arrayName]: (section).map((obj) => {
-          if (obj.id === id) obj[key] = e.target.value;
+          if (obj.id === id) {
+            // 由于 obj 类型为 Education | Experience，不能直接用 string 类型的 key 索引
+            // 这里假设 key 是合法的属性名，使用类型断言进行处理
+            (obj as Record<string, any>)[key] = e.target.value;
+          }
           return obj;
         }),
       });
@@ -51,8 +66,8 @@ const App:FC = () => {
     }
   }
 
-  function createForm(arrayName:keyof ExModules, object:Education | Experience) {
-    setPrevState(null);
+  function createForm(arrayName:keyof Sections, object:any) {
+    setPrevState({});
     if (sections && arrayName) {
       const section = structuredClone<Education[] | Experience[]>(sections[arrayName]);
       section.push(object);
@@ -93,7 +108,7 @@ const App:FC = () => {
   const setOpen = (sectionName:string) => setSectionOpen(sectionName);
   function removeForm(e:MouseEvent<HTMLButtonElement>) {
     const form = e.currentTarget.closest(".section-form") as HTMLFormElement;
-    const { arrayName } = form.dataset as Record<string, keyof ExModules>;
+    const { arrayName } = form.dataset as Record<string, keyof Sections>;
     const { id } = form;
 
     if (arrayName) {
@@ -113,7 +128,7 @@ const App:FC = () => {
     }
     const sectionForm = e.currentTarget.closest(".section-form") as HTMLFormElement;
     const { id } = sectionForm;
-    const { arrayName } = sectionForm.dataset as Record<string, keyof ExModules>;
+    const { arrayName } = sectionForm.dataset as Record<string, keyof Sections>;
     if (arrayName) {
       const section = sections[arrayName];
       setSections({
@@ -131,7 +146,7 @@ const App:FC = () => {
   function toggleValue(e:MouseEvent<HTMLButtonElement>, key:string) {
     const sectionForm = e.currentTarget.closest(".section-form") as HTMLFormElement;
     const { id } = sectionForm;
-    const { arrayName } = sectionForm.dataset as Record<string, keyof ExModules>;
+    const { arrayName } = sectionForm.dataset as Record<string, keyof Sections>;
     if (arrayName) {
       const section = sections[arrayName];
       setSections({
@@ -139,7 +154,9 @@ const App:FC = () => {
         [arrayName]: section.map((obj) => {
           if (obj.id === id) {
             setPrevState(Object.assign({}, obj));
-            obj[key] = !obj[key];
+            // 由于 obj 类型为 Education | Experience，不能直接用 string 类型的 key 索引
+            // 这里假设 key 是合法的属性名，使用类型断言进行处理
+            (obj as Record<string, any>)[key] = !(obj as Record<string, any>)[key];
           }
           return obj;
         }),
@@ -171,7 +188,7 @@ const App:FC = () => {
                 address: "",
               });
               setSections({ educations: [], experiences: []});
-              setPrevState(null);
+              setPrevState({});
             }}
           />
           {sections && currentPage === "content" && (

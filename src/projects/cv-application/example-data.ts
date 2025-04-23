@@ -1,9 +1,9 @@
 import { nanoid } from "nanoid";
-import { Personal, ExModules } from "./types/entries";
+import { Personal, Sections } from "./types/entries";
 
 export const exampleData:{
   personalInfo:Personal["baseInfo"]
-  sections: ExModules
+  sections: Sections
 } = {
   personalInfo: {
     fullName: "Jpsephine Meyers",
