@@ -11,11 +11,10 @@ import { Outlet, Link } from "react-router-dom";
 import { Button, Form, Image, Input, Modal, Pagination, Segmented, Select, Tag } from "antd";
 import { FieldType } from "./types";
 import Meta from "antd/es/card/Meta";
-import Icon from "@mdi/react";
-import { mdiBookEditOutline, mdiTrashCanOutline } from "@mdi/js";
 import { useRef, useState } from "react";
 import { createAuthor } from "@/api/Library";
 import Tabs from "@/components/Tabs";
+import { Icon } from "@/components/icon";
 
 const { Option } = Select;
 
@@ -121,14 +120,14 @@ export const BookPage = () => {
                     to={`./${book._id}/edit`}
                   >
                     <Button 
-                      icon={<Icon path={mdiBookEditOutline} size={1} />}
+                      icon={<Icon icon="mdi:book-edit-outline" />}
                     />
                   </Link>,
                   <Button 
                     onClick={() => {
                       handleDeleteClick(book._id);
                     }}
-                    icon={<Icon path={mdiTrashCanOutline} size={1} />}
+                    icon={<Icon icon="mdi:trash-can-outline" />}
                   />
                 ]}
               >

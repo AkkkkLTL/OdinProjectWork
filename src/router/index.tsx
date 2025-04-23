@@ -9,7 +9,7 @@ import { routerShoppingCart } from "./ShoppingCart";
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <Navigate to={'/shoppingcart'} />
+    element: <Navigate to={'/library/books'} />
   },
    ...libraryRouter,
   // ...gameShopRouter,

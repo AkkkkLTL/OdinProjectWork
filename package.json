@@ -11,16 +11,18 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview --port 8080",
     "distpush": "git subtree push --prefix dist origin gh-pages",
-    "test": "vitest"
+    "test": "vitest",
+    "new:page": "node ./scripts/index.mjs"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@emotion/react": "^11.13.0",
-    "@mdi/js": "^7.4.47",
-    "@mdi/react": "^1.6.1",
+    "@iconify/react": "^5.2.1",
+    "@iconify/utils": "^2.3.0",
     "@reduxjs/toolkit": "^2.2.3",
     "@testing-library/react": "^16.0.1",
+    "@vanilla-extract/css": "^1.17.1",
     "@vitest/coverage-v8": "^2.0.5",
     "antd": "^5.18.2",
     "axios": "^1.7.2",
@@ -30,6 +32,7 @@
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
     "nanoid": "^5.0.7",
+    "nprogress": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
@@ -39,11 +42,12 @@
     "sort-by": "^1.2.0",
     "styled-components": "^6.1.8",
     "swiper": "^11.1.4",
-    "uniqid": "^5.4.0",
     "vitest": "^2.0.5"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.1.4",
     "@types/mockjs": "^1.0.10",
+    "@types/nprogress": "^0.2.3",
     "@types/react": "^18.2.67",
     "@types/react-dom": "^18.2.22",
     "@types/react-helmet": "^6.1.11",
@@ -52,6 +56,7 @@
     "@types/styled-components": "^5.1.34",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
     "@typescript-eslint/parser": "^7.7.1",
+    "@vanilla-extract/vite-plugin": "^5.0.1",
     "@vitejs/plugin-react": "^4.2.1",
     "css-loader": "^6.10.0",
     "eslint": "^8.56.0",
@@ -63,16 +68,14 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "html-webpack-plugin": "^5.6.0",
     "mockjs": "^1.1.0",
+    "path": "^0.12.7",
     "sass": "^1.77.8",
     "style-loader": "^3.3.4",
     "swipi": "^1.1.8",
+    "tailwindcss": "^4.1.4",
     "typescript": "^5.4.5",
     "vite": "^5.1.6",
     "vite-plugin-svgr": "^4.2.0",
-    "vite-tsconfig-paths": "^4.3.2",
-    "webpack": "^5.90.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1",
-    "webpack-merge": "^5.10.0"
+    "vite-tsconfig-paths": "^4.3.2"
   }
 }

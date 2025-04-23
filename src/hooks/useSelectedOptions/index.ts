@@ -1,5 +1,5 @@
 import { setDevelopers, setGenres, setPlatforms, setPublishers, setSelectedGenres, setSelectedPlatforms } from "@redux/GameShop/addGameSlice";
-import { RootState } from "@redux/GameShop/types"
+import { RootState } from "@/redux/GameShop/types"
 import { useSelector } from "react-redux"
 
 export const useSelectionedOptions = () => {

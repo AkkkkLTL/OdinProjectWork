@@ -23,7 +23,7 @@ const useBookList = () => {
 
   useEffect(() => {
     // Get Books
-    axios.get<IBooksRes>("http://192.168.20.149:3000/books", {
+    axios.get<IBooksRes>(`${import.meta.env.VITE_CGAME_API_URL}/books`, {
       headers: {
         "Content-Type": "application/json"
       },
@@ -82,6 +82,7 @@ const useBookList = () => {
 
   const handleStatusChange = (value:BookStatu) => {
     setStatu(value);
+    setCurrentPage(1);
   }
 
   const handlePageChange:PaginationProps['onChange'] = (page) => {

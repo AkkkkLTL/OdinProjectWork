@@ -1,0 +1,42 @@
+.ant-card-cover {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  padding-top: 10px;
+
+  img {
+    border-radius: 5px;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  &::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    border-radius: 50%;
+  }
+}
+
+.ant-card-actions {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  background-color: transparent;
+  & * {
+    border-inline-end: none;
+  }
+}
+
+.ant-card-meta-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+}
