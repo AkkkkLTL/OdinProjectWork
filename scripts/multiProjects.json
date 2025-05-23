@@ -1,1 +1,10 @@
-[{"chunk":"library","chunkName":"library"}]
+[
+  {
+    "chunk":"library",
+    "chunkName":"个人图书馆"
+  },
+  {
+    "chunk":"cv-application",
+    "chunkName":"简历制作"
+  }
+]

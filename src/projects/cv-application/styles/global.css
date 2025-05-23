@@ -1,4 +1,12 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: "GenJyuuGothic-Monospace-Medium";
+  src: url("../assets/fonts/GenJyuuGothic-Monospace-Regular-2.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,16 +15,18 @@
 
 :root {
   font-size: 16px;
+
 }
 
 body {
-  --resume-accent: #0e374e;
   --main-bg-color: #f3f4f6;
+  /* 简历主题色 */
+  --resume-theme-color: #0e374e;
+  /* 简历字体 */
+  --resume-theme-font: "PingFang SC", "Microsoft YaHei", sans-serif, "GenJyuuGothic Monospace Medium";
+  --resume-theme-header-color: white;
+  --resume-section-bg: #f3f4f6;
   background-color: var(--main-bg-color);
-}
-
-button {
-  font-family: inherit;
 }
 
 h1,
