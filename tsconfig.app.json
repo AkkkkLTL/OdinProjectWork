@@ -42,7 +42,8 @@
     "tests/**/*.tsx",
     "tests/**/*.ts",
     "scripts/template",
-    "vite.config.ts"
+    "vite.config.ts",
+    "scripts/multiProjects.json",
   ],
   "exclude": ["node_modules", "dist"]
 }
